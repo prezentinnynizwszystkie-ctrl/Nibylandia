@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { GlassCard } from '../GlassCard';
 import { Button } from '../Button';
 import { Partner } from '../../types';
@@ -52,12 +52,39 @@ interface MultibajkaSectionProps {
 
 export const MultibajkaSection: React.FC<MultibajkaSectionProps> = ({ partner }) => {
   const [isPlaying, setIsPlaying] = useState(false);
+  const bgVideoRef = useRef<HTMLVideoElement>(null);
+  const promoVideoRef = useRef<HTMLVideoElement>(null);
   
   const videoPoster = "https://idbvgxjvitowbysvpjlk.supabase.co/storage/v1/object/public/NewPartnerApp/Testing/NibylandiaPosterVideo.webp";
   const heroStoryImgFallback = "https://idbvgxjvitowbysvpjlk.supabase.co/storage/v1/object/public/NewPartnerApp/UniversalPhotos/HeroStorySectionWebp.webp";
   const backgroundHeroVideo = "https://idbvgxjvitowbysvpjlk.supabase.co/storage/v1/object/public/NewPartnerApp/UniversalVideos/HeroVideos/HeroVideoV2.webm";
   const promoVideoUrl = "https://idbvgxjvitowbysvpjlk.supabase.co/storage/v1/object/public/NewPartnerApp/Partners/Katowice/Nibylandia/Videos/NibylandiaMultibajka.webm";
   const bottomStripUrl = "https://idbvgxjvitowbysvpjlk.supabase.co/storage/v1/object/public/NewPartnerApp/Testing/paczajawdol2.webp";
+
+  // Safari Autoplay Fix: Enforce muted property via DOM API for background video
+  useEffect(() => {
+    if (bgVideoRef.current) {
+      bgVideoRef.current.defaultMuted = true;
+      bgVideoRef.current.muted = true;
+      bgVideoRef.current.play().catch(err => {
+        console.warn("Background video autoplay prevented:", err);
+      });
+    }
+  }, []);
+
+  // Safari Fix: Handle interactive promo video playback
+  useEffect(() => {
+    if (isPlaying && promoVideoRef.current) {
+      // Force load to ensure source is ready, then play
+      promoVideoRef.current.load();
+      const playPromise = promoVideoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.error("Promo video playback failed:", error);
+        });
+      }
+    }
+  }, [isPlaying]);
 
   return (
     <section id="multibajka-section" className="scroll-mt-32 relative w-full overflow-visible py-24 md:py-32">
@@ -132,6 +159,7 @@ export const MultibajkaSection: React.FC<MultibajkaSectionProps> = ({ partner })
              <GlassCard className="p-8 md:p-12 lg:p-16 mb-24 relative overflow-hidden bg-slate-900 border-white/10 shadow-[0_50px_100px_rgba(0,0,0,0.4)] rounded-[3rem]">
                 <div className="absolute inset-0 z-0">
                   <video 
+                    ref={bgVideoRef}
                     src={backgroundHeroVideo}
                     poster={heroStoryImgFallback}
                     autoPlay 
@@ -157,7 +185,13 @@ export const MultibajkaSection: React.FC<MultibajkaSectionProps> = ({ partner })
                              </div>
                            ) : (
                              <div className="absolute inset-0 bg-black z-20 flex items-center justify-center">
-                               <video src={promoVideoUrl} controls autoPlay className="w-full h-full" />
+                               <video 
+                                 ref={promoVideoRef}
+                                 src={promoVideoUrl} 
+                                 controls 
+                                 playsInline 
+                                 className="w-full h-full" 
+                               />
                                <button onClick={() => setIsPlaying(false)} className="absolute top-8 right-8 p-3 rounded-full bg-white/10 text-white hover:bg-rose-500/50 backdrop-blur-md z-30 transition-colors">✕</button>
                              </div>
                            )}
