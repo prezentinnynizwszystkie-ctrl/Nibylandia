@@ -246,9 +246,9 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
                 <div className="text-[8px] md:text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 mb-5 md:mb-8">Gratisy za liczbę gości</div>
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-4 md:gap-12 relative">
                    {[
-                     {n: '10+', c: 'primary', l: 'Poziom 1', d: 'Dla SOLENIZANTA i woda GRATIS.'},
-                     {n: '15+', c: 'accent', l: 'Poziom 2', d: 'Wszystko + DODATKOWA OSOBA gratis.'},
-                     {n: '20+', c: 'primary', l: 'Poziom 3', d: 'Wszystko + DWIE OSOBY gratis.'}
+                     {n: '10+', c: 'primary', l: 'Poziom 1', d: 'zabawa i poczęstunek dla SOLENIZANTA oraz dolewka wody dla uczestników GRATIS'},
+                     {n: '15+', c: 'accent', l: 'Poziom 2', d: 'zabawa i poczęstunek dla SOLENIZANTA i dodatkowej osoby oraz dolewka wody dla uczestników GRATIS'},
+                     {n: '20+', c: 'primary', l: 'Poziom 3', d: 'zabawa i poczęstunek dla SOLENIZANTA i dwóch dodatkowych osób oraz dolewka wody dla uczestników GRATIS.'}
                    ].map((m, i) => (
                      <div key={m.l} className="flex-1 flex flex-row md:flex-col items-center md:text-center group relative">
                         {i < 2 && <div className="absolute left-5 top-10 bottom-0 w-0.5 bg-slate-100 md:hidden"></div>}
