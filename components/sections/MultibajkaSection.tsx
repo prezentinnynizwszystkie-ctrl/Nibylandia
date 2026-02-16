@@ -144,7 +144,7 @@ export const MultibajkaSection: React.FC<MultibajkaSectionProps> = ({ partner })
                      </div>
 
                      <a 
-                       href="https://kreator-nibylandia-380221505176.us-west1.run.app" 
+                       href="https://kreator-nibylandia.vercel.app/" 
                        target="_blank" 
                        rel="noopener noreferrer"
                        className="w-full md:w-auto px-10 py-4 bg-primary text-white font-black text-xs md:text-sm uppercase tracking-[0.2em] rounded-xl hover:scale-105 transition-all shadow-lg shadow-primary/30 active:scale-95 text-center"
