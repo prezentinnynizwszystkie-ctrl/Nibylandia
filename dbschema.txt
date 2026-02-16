@@ -1,0 +1,1773 @@
+{
+	"enums": [
+		{
+			"values": [
+				"KLIENT",
+				"ADMIN",
+				"HANDLOWIEC",
+				"PARTNER"
+			],
+			"enum_name": "app_role",
+			"schema_name": "PartnersApp"
+		},
+		{
+			"values": [
+				"BRAK",
+				"PAKIET",
+				"PROWIZJA"
+			],
+			"enum_name": "partner_model",
+			"schema_name": "PartnersApp"
+		},
+		{
+			"values": [
+				"BRAK",
+				"AKTYWNY",
+				"NIEAKTYWNY"
+			],
+			"enum_name": "partner_status",
+			"schema_name": "PartnersApp"
+		}
+	],
+	"tables": [
+		{
+			"table": "Names",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"Names_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Name",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Sex",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Public Read Names",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": []
+		},
+		{
+			"table": "MarketingPermissions",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"MarketingPermissions_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Name",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Phone",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Mail",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "MarketingAgree",
+					"type": "bool",
+					"default": "false",
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "RegulationsAgree",
+					"type": "bool",
+					"default": "false",
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "created_at",
+					"type": "timestamptz",
+					"default": "now()",
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Public Insert Marketing",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "true",
+					"using_expression": null
+				}
+			],
+			"rls_enabled": true,
+			"relationships": []
+		},
+		{
+			"table": "CorrectedDynamicLines",
+			"schema": "birthdays",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "YES"
+				},
+				{
+					"name": "Name",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "IsApproved",
+					"type": "bool",
+					"default": "false",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "OrderId",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Text",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "NameHash",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "OrderId",
+					"foreign_table": "StoryOrders",
+					"foreign_column": "Id",
+					"foreign_schema": "birthdays"
+				}
+			]
+		},
+		{
+			"table": "StorySchemas",
+			"schema": "birthdays",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "YES"
+				},
+				{
+					"name": "StoryId",
+					"type": "int2",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Schema",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "StoryId",
+					"foreign_table": "StoryTypes",
+					"foreign_column": "Id",
+					"foreign_schema": "birthdays"
+				}
+			]
+		},
+		{
+			"table": "Prompts",
+			"schema": "birthdays",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int2",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "YES"
+				},
+				{
+					"name": "Type",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Text",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Service",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [],
+			"rls_enabled": true,
+			"relationships": []
+		},
+		{
+			"table": "GeneratedSamples",
+			"schema": "birthdays",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "YES"
+				},
+				{
+					"name": "Name",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "IsApproved",
+					"type": "bool",
+					"default": "false",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "OrderId",
+					"type": "int4",
+					"default": "41",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "NameHash",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "OrderId",
+					"foreign_table": "StoryOrders",
+					"foreign_column": "Id",
+					"foreign_schema": "birthdays"
+				}
+			]
+		},
+		{
+			"table": "StoryOrders",
+			"schema": "birthdays",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "YES"
+				},
+				{
+					"name": "OrderId",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Status",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "StatusInfo",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Questionnaire",
+					"type": "jsonb",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "CreatedDate",
+					"type": "timestamptz",
+					"default": "now()",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Email",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "StoryId",
+					"type": "int2",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "PartnerId",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Authenticated Read Orders",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				},
+				{
+					"name": "Public Insert Orders",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "true",
+					"using_expression": null
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "StoryId",
+					"foreign_table": "StoryTypes",
+					"foreign_column": "Id",
+					"foreign_schema": "birthdays"
+				}
+			]
+		},
+		{
+			"table": "PartnerAgeGroups",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"PartnerAgeGroups_id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "partner_id",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "age_group_id",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Public Read PartnerAgeGroups",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "partner_id",
+					"foreign_table": "Partners",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				},
+				{
+					"column": "age_group_id",
+					"foreign_table": "AgeGroups",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "StoryTypes",
+			"schema": "birthdays",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int2",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "YES"
+				},
+				{
+					"name": "Code",
+					"type": "varchar",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "VoiceId",
+					"type": "int2",
+					"default": "'1'::smallint",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Type",
+					"type": "text",
+					"default": "'Audio'::text",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Settings",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "StoriesId",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [],
+			"rls_enabled": true,
+			"relationships": []
+		},
+		{
+			"table": "DynamicLines",
+			"schema": "birthdays",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "YES"
+				},
+				{
+					"name": "Code",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Text",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "SchemaId",
+					"type": "int4",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "IsCacheable",
+					"type": "bool",
+					"default": "true",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Relation",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "VoiceId",
+					"type": "int2",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "SchemaId",
+					"foreign_table": "StorySchemas",
+					"foreign_column": "Id",
+					"foreign_schema": "birthdays"
+				}
+			]
+		},
+		{
+			"table": "PartnersCodes",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"PartnersCodes_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "PartnerId",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "PartnerName",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [],
+			"rls_enabled": false,
+			"relationships": [
+				{
+					"column": "PartnerId",
+					"foreign_table": "Partners",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "Handlowcy",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"Handlowcy_id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "imie",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "nazwisko",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "telefon",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "email",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "created_at",
+					"type": "timestamptz",
+					"default": "now()",
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "SprzedazSuma",
+					"type": "numeric",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "PhotoUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Public Read Handlowcy",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": []
+		},
+		{
+			"table": "Partners",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"Partners_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "PartnerType",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "PartnerName",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "IdOpiekuna",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "ContactPerson",
+					"type": "jsonb",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Status",
+					"type": "partner_status",
+					"default": "'BRAK'::\"PartnersApp\".partner_status",
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Model",
+					"type": "partner_model",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "SellPrice",
+					"type": "numeric",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Prowizja",
+					"type": "numeric",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "ProwizjaObsluga",
+					"type": "numeric",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "SprzedazIlosc",
+					"type": "numeric",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Slug",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "LogoUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Theme",
+					"type": "jsonb",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "contact_email",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "PartnerNameGenitive",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "PhotoUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Miasto",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "UmowaUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "contact_number",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "ContractStatus",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "ContractSignedDate",
+					"type": "timestamptz",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "ContractDuration",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "ContractEndDate",
+					"type": "timestamptz",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "IntroUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "HeroHeader",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "ProposalPhotoUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Authenticated Insert Partners",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "(auth.role() = 'authenticated'::text)",
+					"using_expression": null
+				},
+				{
+					"name": "Public Read Partners",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				},
+				{
+					"name": "Admin Delete Partners",
+					"roles": [
+						"public"
+					],
+					"action": "DELETE",
+					"check_expression": null,
+					"using_expression": "(EXISTS ( SELECT 1\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND (\"Profiles\".role = 'ADMIN'::\"PartnersApp\".app_role))))"
+				},
+				{
+					"name": "Authenticated Edit Partners",
+					"roles": [
+						"public"
+					],
+					"action": "UPDATE",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				},
+				{
+					"name": "Handlowcy Update Own Partners",
+					"roles": [
+						"public"
+					],
+					"action": "UPDATE",
+					"check_expression": null,
+					"using_expression": "((\"IdOpiekuna\" IN ( SELECT \"Profiles\".handlowiec_id\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE (\"Profiles\".id = auth.uid()))) OR (EXISTS ( SELECT 1\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND ((\"Profiles\".role)::text = 'ADMIN'::text)))))"
+				},
+				{
+					"name": "Handlowcy Create Partners",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "(EXISTS ( SELECT 1\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND (((\"Profiles\".role)::text = 'HANDLOWIEC'::text) OR ((\"Profiles\".role)::text = 'ADMIN'::text)))))",
+					"using_expression": null
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "IdOpiekuna",
+					"foreign_table": "Handlowcy",
+					"foreign_column": "id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "AgeGroups",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"AgeGroups_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "AgeGroup",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Public Read AgeGroups",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": []
+		},
+		{
+			"table": "Stories",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"Stories_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "StoryTitle",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "StoryHeroUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "StoryDescription",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "AgeGroup",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "CoverUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "DynamicLines",
+					"type": "jsonb",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Scenario",
+					"type": "jsonb",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Lektorzy",
+					"type": "jsonb",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Gender",
+					"type": "text",
+					"default": "'Uniwersalna'::text",
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Schema",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Authenticated Insert Update Stories",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "(auth.role() = 'authenticated'::text)",
+					"using_expression": null
+				},
+				{
+					"name": "Authenticated Update Stories",
+					"roles": [
+						"public"
+					],
+					"action": "UPDATE",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				},
+				{
+					"name": "Admin Delete Stories",
+					"roles": [
+						"public"
+					],
+					"action": "DELETE",
+					"check_expression": null,
+					"using_expression": "(EXISTS ( SELECT 1\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND (\"Profiles\".role = 'ADMIN'::\"PartnersApp\".app_role))))"
+				},
+				{
+					"name": "Public Read Stories",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				},
+				{
+					"name": "Authenticated Read Write Stories",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "AgeGroup",
+					"foreign_table": "AgeGroups",
+					"foreign_column": "AgeGroup",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "PartnerRequests",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"PartnerRequests_id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "partner_id",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "request_type",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "description",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "status",
+					"type": "text",
+					"default": "'OCZEKUJE'::text",
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "created_at",
+					"type": "timestamptz",
+					"default": "now()",
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Authenticated All Requests",
+					"roles": [
+						"public"
+					],
+					"action": "ALL",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				},
+				{
+					"name": "Access Requests Policy",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "((partner_id IN ( SELECT \"Profiles\".partner_id\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE (\"Profiles\".id = auth.uid()))) OR (EXISTS ( SELECT 1\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND (\"Profiles\".role = ANY (ARRAY['ADMIN'::\"PartnersApp\".app_role, 'HANDLOWIEC'::\"PartnersApp\".app_role]))))))"
+				},
+				{
+					"name": "Partners Insert Requests",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "((partner_id IN ( SELECT \"Profiles\".partner_id\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE (\"Profiles\".id = auth.uid()))) OR (EXISTS ( SELECT 1\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND (\"Profiles\".role = 'ADMIN'::\"PartnersApp\".app_role)))))",
+					"using_expression": null
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "partner_id",
+					"foreign_table": "Partners",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "StoryVoices",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"StoryVoices_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "VoiceId",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Settings",
+					"type": "jsonb",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Name",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Admin All Voices",
+					"roles": [
+						"public"
+					],
+					"action": "ALL",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				},
+				{
+					"name": "Public Read Voices",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": []
+		},
+		{
+			"table": "StoryTypes",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"StoryTypes_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Code",
+					"type": "varchar",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "VoiceId",
+					"type": "int2",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Type",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Settings",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "CoverUrl",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "AgeGroup",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "StoryDescription",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Public Read Types",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				},
+				{
+					"name": "Admin All Types",
+					"roles": [
+						"public"
+					],
+					"action": "ALL",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "AgeGroup",
+					"foreign_table": "AgeGroups",
+					"foreign_column": "AgeGroup",
+					"foreign_schema": "PartnersApp"
+				},
+				{
+					"column": "VoiceId",
+					"foreign_table": "StoryVoices",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "StorySchemas",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"StorySchemas_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "StoryId",
+					"type": "int2",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Schema",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Public Read Schemas",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				},
+				{
+					"name": "Admin All Schemas",
+					"roles": [
+						"public"
+					],
+					"action": "ALL",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "StoryId",
+					"foreign_table": "StoryTypes",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "DynamicLines",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "Id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"DynamicLines_Id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Code",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Text",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "SchemaId",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "IsCacheable",
+					"type": "bool",
+					"default": "false",
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "Relation",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "VoiceId",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Public Read Dynamics",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				},
+				{
+					"name": "Admin All Dynamics",
+					"roles": [
+						"public"
+					],
+					"action": "ALL",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "VoiceId",
+					"foreign_table": "StoryVoices",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				},
+				{
+					"column": "SchemaId",
+					"foreign_table": "StorySchemas",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "Proposals",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "id",
+					"type": "uuid",
+					"default": "gen_random_uuid()",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "partner_id",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "custom_header",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "created_at",
+					"type": "timestamptz",
+					"default": "now()",
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Auth Insert Proposals",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "(auth.role() = 'authenticated'::text)",
+					"using_expression": null
+				},
+				{
+					"name": "Public Read Proposals",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "partner_id",
+					"foreign_table": "Partners",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "Profiles",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "id",
+					"type": "uuid",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "email",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "role",
+					"type": "app_role",
+					"default": "'KLIENT'::\"PartnersApp\".app_role",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "partner_id",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "handlowiec_id",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "created_at",
+					"type": "timestamptz",
+					"default": "now()",
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "partner_role",
+					"type": "text",
+					"default": "'OWNER'::text",
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "System Insert Profiles",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "true",
+					"using_expression": null
+				},
+				{
+					"name": "Authenticated can read profiles",
+					"roles": [
+						"authenticated"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "true"
+				},
+				{
+					"name": "Enable Insert for Auth System",
+					"roles": [
+						"public"
+					],
+					"action": "INSERT",
+					"check_expression": "true",
+					"using_expression": null
+				},
+				{
+					"name": "Read Profiles",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "(auth.role() = 'authenticated'::text)"
+				},
+				{
+					"name": "Users can see own profile",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "(auth.uid() = id)"
+				}
+			],
+			"rls_enabled": false,
+			"relationships": [
+				{
+					"column": "partner_id",
+					"foreign_table": "Partners",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				},
+				{
+					"column": "handlowiec_id",
+					"foreign_table": "Handlowcy",
+					"foreign_column": "id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		},
+		{
+			"table": "PartnerEmployees",
+			"schema": "PartnersApp",
+			"columns": [
+				{
+					"name": "id",
+					"type": "int4",
+					"default": "nextval('\"PartnersApp\".\"PartnerEmployees_id_seq\"'::regclass)",
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "partner_id",
+					"type": "int4",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "email",
+					"type": "text",
+					"default": null,
+					"nullable": "NO",
+					"is_identity": "NO"
+				},
+				{
+					"name": "name",
+					"type": "text",
+					"default": null,
+					"nullable": "YES",
+					"is_identity": "NO"
+				},
+				{
+					"name": "created_at",
+					"type": "timestamptz",
+					"default": "now()",
+					"nullable": "YES",
+					"is_identity": "NO"
+				}
+			],
+			"policies": [
+				{
+					"name": "Partner Manage Employees",
+					"roles": [
+						"public"
+					],
+					"action": "ALL",
+					"check_expression": "(partner_id IN ( SELECT \"Profiles\".partner_id\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND (\"Profiles\".partner_role = 'OWNER'::text))))",
+					"using_expression": "(partner_id IN ( SELECT \"Profiles\".partner_id\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND (\"Profiles\".partner_role = 'OWNER'::text))))"
+				},
+				{
+					"name": "Partner View Employees",
+					"roles": [
+						"public"
+					],
+					"action": "SELECT",
+					"check_expression": null,
+					"using_expression": "((partner_id IN ( SELECT \"Profiles\".partner_id\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE (\"Profiles\".id = auth.uid()))) OR (EXISTS ( SELECT 1\n   FROM \"PartnersApp\".\"Profiles\"\n  WHERE ((\"Profiles\".id = auth.uid()) AND (\"Profiles\".role = 'ADMIN'::\"PartnersApp\".app_role)))))"
+				}
+			],
+			"rls_enabled": true,
+			"relationships": [
+				{
+					"column": "partner_id",
+					"foreign_table": "Partners",
+					"foreign_column": "Id",
+					"foreign_schema": "PartnersApp"
+				}
+			]
+		}
+	],
+	"generated_at": "2026-02-08T09:45:24.115239+00:00",
+	"project_name": "MultiBajka - Partners & Birthdays Only"
+}
