@@ -99,28 +99,6 @@ export const AppViewScreen: React.FC<AppViewScreenProps> = ({
              <MultibajkaSection partner={partner} />
           </div>
 
-          <div className="w-full bg-[#efefef] pt-8 pb-16 flex justify-center px-4 md:px-6">
-            <div className="w-full max-w-6xl">
-              <div className="group relative w-full p-1 bg-gradient-to-r from-primary via-accent to-primary rounded-full shadow-[0_20px_60px_-10px_rgba(99,102,241,0.3)] hover:scale-[1.01] transition-all duration-500">
-                <GlassCard className="w-full p-4 md:p-6 flex flex-col md:flex-row items-center justify-between gap-6 border-none bg-white/90 shadow-none rounded-full overflow-hidden">
-                   <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8 md:pl-6 text-center md:text-left">
-                      <div className="px-6 py-2.5 bg-accent text-slate-900 text-[12px] font-black rounded-full shadow-lg tracking-[0.2em] uppercase animate-bounce-slow">HIT!</div>
-                      <h4 className="text-xl md:text-3xl font-black text-[#1E293B] tracking-tighter uppercase leading-none">
-                        TWOJE DZIECKO <span className="text-primary">BOHATEREM</span> WŁASNEJ HISTORII!
-                      </h4>
-                   </div>
-                   <button 
-                     onClick={() => setIsInfoPageOpen(true)}
-                     className="px-10 py-4 md:px-14 md:py-5 bg-[#0B0F1A] text-white font-black rounded-full text-sm md:text-base hover:shadow-[0_15px_30px_rgba(0,0,0,0.3)] transition-all shrink-0 whitespace-nowrap active:scale-95 md:mr-2 flex items-center gap-3 group/btn"
-                   >
-                      Dowiedz się więcej!
-                      <svg className="w-5 h-5 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M13 7l5 5m0 0l-5 5m5-5H6" /></svg>
-                   </button>
-                </GlassCard>
-              </div>
-            </div>
-          </div>
-
           <section className="bg-[#0b0f1a] py-24 md:py-32 relative overflow-hidden">
              <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
                 <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[150px] animate-pulse"></div>
