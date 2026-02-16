@@ -21,8 +21,7 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
         </h2>
         <div className="w-16 h-1 bg-gradient-to-r from-primary to-accent rounded-full mx-auto"></div>
         <p className="text-slate-500 font-medium max-w-xl text-base md:text-xl mt-2">
-          Kompleksowa organizacja przyjęcia. 
-          <span className="text-primary font-bold ml-1">2.5 godziny czystej magii i zabawy.</span>
+          <span className="text-primary font-bold">2,5 h zabawy + zestaw</span>
         </p>
       </div>
       
@@ -31,7 +30,7 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
           <div className="p-5 md:p-10 flex flex-col lg:flex-row gap-6 items-center">
              <div className="flex-1 text-center lg:text-left">
                 <h3 className="text-2xl md:text-4xl font-black text-slate-800 mb-0.5 tracking-tight">Bilet Urodzinowy</h3>
-                <p className="text-slate-500 font-bold text-xs md:text-sm max-w-xs md:max-w-md italic leading-tight">Wybierz pakiet dopasowany do Twoich potrzeb i dnia tygodnia.</p>
+                <p className="text-slate-500 font-bold text-xs md:text-sm max-w-xs md:max-w-md italic leading-tight">W cenie: 2,5 h zabawy oraz wybrany zestaw (Mały Smakosza lub Zgodny z Naturą).</p>
              </div>
              
              <div className="flex flex-col sm:flex-row gap-4 items-center justify-center w-full lg:w-auto">
@@ -43,7 +42,7 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
                      loading="lazy"
                    />
                    <div className="h-full w-full p-5 md:p-8 rounded-[1.5rem] bg-slate-50/80 border border-slate-100 text-center shadow-sm relative z-0 flex flex-col justify-center min-h-[140px]">
-                      <span className="block text-[8px] md:text-[10px] uppercase tracking-widest text-slate-400 font-black mb-1">Pn - Czw</span>
+                      <span className="block text-[8px] md:text-[10px] uppercase tracking-widest text-slate-400 font-black mb-1">Poniedziałek - Czwartek</span>
                       <span className="block text-3xl md:text-5xl font-black text-slate-800">65 zł</span>
                       <span className="block text-[8px] md:text-[10px] text-slate-400 mt-0.5 font-black uppercase tracking-widest">Za dziecko</span>
                    </div>
@@ -51,7 +50,7 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
 
                 <div className="relative group min-w-[160px] md:min-w-[200px]">
                    <div className="h-full w-full p-5 md:p-8 rounded-[1.5rem] bg-primary text-white shadow-2xl text-center transform sm:scale-105 relative overflow-hidden z-0 flex flex-col justify-center min-h-[140px]">
-                      <span className="block text-[8px] md:text-[10px] uppercase tracking-widest text-white/70 font-black mb-1">Pt - Nd & Święta</span>
+                      <span className="block text-[8px] md:text-[10px] uppercase tracking-widest text-white/70 font-black mb-1">Piątek - Niedziela i Święta</span>
                       <span className="block text-3xl md:text-5xl font-black">75 zł</span>
                       <span className="block text-[8px] md:text-[10px] text-white/50 mt-0.5 font-black uppercase tracking-widest">Za dziecko</span>
                    </div>
@@ -70,7 +69,7 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
       <div className="pt-4">
         <HorizontalScrollSection 
            title="Wybór Menu (W cenie)" 
-           subtitle="Jeden z dwóch wariantów dla całej grupy."
+           subtitle="Wybierz jeden z dwóch dostępnych zestawów dla gości."
            desktopLayoutClass="lg:grid lg:grid-cols-2 lg:gap-8"
         >
            <GlassCard className="flex flex-col h-full border-white bg-white hover:bg-white transition-all shadow-xl rounded-[2rem] overflow-visible">
@@ -83,15 +82,19 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
                 </div>
               </div>
               <div className="p-6 pt-8 md:p-10 md:pt-12 flex-1">
-                 <ul className="space-y-2 md:space-y-3 text-slate-600 font-bold text-xs md:text-base">
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> 100% sok owocowy i woda</li>
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> Słone paluszki, Chipsy, Popcorn</li>
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> Chrupki kukurydziane smakowe</li>
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> Żelki, Gumy Mamba, Kinderki</li>
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> Kruche ciasteczka</li>
+                 <ul className="space-y-2 md:space-y-3 text-slate-600 font-bold text-xs md:text-sm">
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> 100% sok owocowy</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> niegazowana woda mineralna</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> słone paluszki</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> chipsy</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> chrupki kukurydziane smakowe</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> żelki</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> gumy Mamba</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> czekoladki Kinder</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-primary"></span> kruche ciasteczka</li>
                  </ul>
               </div>
-              <div className="p-3 md:p-4 bg-primary/10 text-center text-[8px] md:text-[11px] font-black text-primary uppercase tracking-[0.2em] rounded-b-[2rem]">+ Balon dla każdego dziecka</div>
+              <div className="p-3 md:p-4 bg-primary/10 text-center text-[8px] md:text-[11px] font-black text-primary uppercase tracking-[0.2em] rounded-b-[2rem]">+ Balon dla każdego Dziecka uczestniczącego w przyjęciu</div>
            </GlassCard>
 
            <GlassCard className="flex flex-col h-full border-white bg-white hover:bg-white transition-all shadow-xl rounded-[2rem] overflow-visible">
@@ -104,22 +107,26 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
                 </div>
               </div>
               <div className="p-6 pt-8 md:p-10 md:pt-12 flex-1">
-                 <ul className="space-y-2 md:space-y-3 text-slate-600 font-bold text-xs md:text-base">
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Soki 100%, Woda mineralna</li>
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Świeże owoce sezonowe</li>
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Chrupki naturalne, Popcorn</li>
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Słone paluszki</li>
-                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Czekoladki Kinder</li>
+                 <ul className="space-y-2 md:space-y-3 text-slate-600 font-bold text-xs md:text-sm">
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> 100% sok owocowy</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> niegazowana woda mineralna</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> jabłka</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> banany</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> chrupki kukurydziane naturalne</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> popcorn</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> słone paluszki</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> czekoladki Kinder</li>
+                    <li className="flex items-center gap-3"><span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> kruche ciasteczka</li>
                  </ul>
               </div>
-              <div className="p-3 md:p-4 bg-emerald-50 text-center text-[8px] md:text-[11px] font-black text-emerald-600 uppercase tracking-[0.2em] rounded-b-[2rem]">+ Balon dla każdego dziecka</div>
+              <div className="p-3 md:p-4 bg-emerald-50 text-center text-[8px] md:text-[11px] font-black text-emerald-600 uppercase tracking-[0.2em] rounded-b-[2rem]">+ Balon dla każdego Dziecka uczestniczącego w przyjęciu</div>
            </GlassCard>
         </HorizontalScrollSection>
       </div>
 
       <div className="pt-8 space-y-6">
         <div className="flex items-end justify-between px-1">
-          <h3 className="text-xl md:text-3xl font-black text-slate-800 uppercase tracking-tight italic">Dodatki i Atrakcje</h3>
+          <h3 className="text-xl md:text-3xl font-black text-slate-800 uppercase tracking-tight italic">Opcje Dodatkowe</h3>
         </div>
 
         {/* PRZEPROJEKTOWANY KAFELEK MULTIBAJKI - DOKŁADNIE WEDŁUG PROJEKTU */}
@@ -168,13 +175,19 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
                 <div className="w-7 h-7 md:w-10 md:h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <svg className="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.247 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
                 </div>
-                Napoje i Jedzenie
+                Gastronomia
               </h4>
               <ul className="space-y-3 text-[10px] md:text-[13px] font-bold text-slate-700">
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Nuggetsy + frytki</span> <span className="text-primary font-black">15 zł</span></li>
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Tosty ser/szynka</span> <span className="text-primary font-black">9 zł</span></li>
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Lody (gałka)</span> <span className="text-primary font-black">6 zł</span></li>
-                <li className="flex justify-between items-center"><span>Dzbanek soku</span> <span className="text-primary font-black">15 zł</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Nuggetsy z frytkami</span> <span className="text-primary font-black">15 zł / porcja</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Tosty</span> <span className="text-primary font-black">9 zł / porcja</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Lody</span> <span className="text-primary font-black">6 zł / gałka</span></li>
+                <li className="flex justify-between items-center">
+                    <div className="flex flex-col">
+                        <span>Poczęstunek dla rodziców</span>
+                        <span className="text-[8px] text-slate-400 font-normal">(sernik, szarlotka)</span>
+                    </div>
+                    <span className="text-primary font-black text-right text-[10px]">wycena indyw.</span>
+                </li>
               </ul>
            </GlassCard>
 
@@ -186,10 +199,13 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
                  Organizacja
               </h4>
               <ul className="space-y-3 text-[10px] md:text-[13px] font-bold text-slate-700">
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Własny tort (opłata)</span> <span className="text-slate-400 font-black">50 zł</span></li>
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Piniata własna</span> <span className="text-slate-400 font-black">40 zł</span></li>
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Piniata z wypełn.</span> <span className="text-slate-400 font-black">120 zł</span></li>
-                <li className="flex justify-between items-center"><span>Przedłużenie (30m)</span> <span className="text-slate-400 font-black">100 zł</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Bajkowa zastawa</span> <span className="text-slate-400 font-black">15 zł / os</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Tort</span> <span className="text-slate-400 font-black">wycena indyw.</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Wniesienie wł. tortu</span> <span className="text-slate-400 font-black">50 zł</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Wniesienie wł. piniaty</span> <span className="text-slate-400 font-black">40 zł</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Piniata z wypełnieniem</span> <span className="text-slate-400 font-black">120 zł</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Przedłużenie (30 min)</span> <span className="text-slate-400 font-black">10 zł / os</span></li>
+                <li className="flex justify-between items-center"><span>Zaproszenie</span> <span className="text-slate-400 font-black">2 zł / szt</span></li>
               </ul>
            </GlassCard>
 
@@ -198,13 +214,20 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
                  <div className="w-7 h-7 md:w-10 md:h-10 rounded-lg bg-accent/10 flex items-center justify-center">
                    <svg className="w-3.5 h-3.5 md:w-5 md:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" /></svg>
                  </div>
-                 Dodatkowe Atrakcje
+                 Animacje i Atrakcje
               </h4>
               <ul className="space-y-3 text-[10px] md:text-[13px] font-bold text-slate-700">
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Tatuaże brokatowe</span> <span className="text-accent font-black">10 zł/os</span></li>
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Zamykanie w bańce</span> <span className="text-accent font-black">150 zł</span></li>
-                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Skręcanie balonów</span> <span className="text-accent font-black">80 zł</span></li>
-                <li className="flex justify-between items-center"><span>Myszka Miki / Minnie</span> <span className="text-accent font-black">200 zł</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Animacje (45 min)</span> <span className="text-accent font-black">120 zł</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2">
+                    <div className="flex flex-col">
+                        <span>Maskotka (15 min)</span>
+                        <span className="text-[8px] text-slate-400 font-normal">Myszka Miki/Minnie, Minionek</span>
+                    </div>
+                    <span className="text-accent font-black">30 zł</span>
+                </li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Malowanie buziek</span> <span className="text-accent font-black">10 zł / os</span></li>
+                <li className="flex justify-between items-center border-b border-slate-50 pb-2"><span>Kolorowe warkoczyki</span> <span className="text-accent font-black">10 zł / szt</span></li>
+                <li className="flex justify-between items-center"><span>Tatuaże brokatowe</span> <span className="text-accent font-black">8 zł / szt</span></li>
               </ul>
            </GlassCard>
         </HorizontalScrollSection>
@@ -246,9 +269,9 @@ export const OfferNibylandia: React.FC<OfferNibylandiaProps> = ({ partner, onLea
                 <div className="text-[8px] md:text-[12px] font-black uppercase tracking-[0.2em] text-slate-400 mb-5 md:mb-8">Gratisy za liczbę gości</div>
                 <div className="flex flex-col md:flex-row items-stretch justify-between gap-4 md:gap-12 relative">
                    {[
-                     {n: '10+', c: 'primary', l: 'Poziom 1', d: 'zabawa i poczęstunek dla SOLENIZANTA oraz dolewka wody dla uczestników GRATIS'},
-                     {n: '15+', c: 'accent', l: 'Poziom 2', d: 'zabawa i poczęstunek dla SOLENIZANTA i dodatkowej osoby oraz dolewka wody dla uczestników GRATIS'},
-                     {n: '20+', c: 'primary', l: 'Poziom 3', d: 'zabawa i poczęstunek dla SOLENIZANTA i dwóch dodatkowych osób oraz dolewka wody dla uczestników GRATIS.'}
+                     {n: '10+', c: 'primary', l: 'Poziom 1', d: 'Dla SOLENIZANTA i woda GRATIS.'},
+                     {n: '15+', c: 'accent', l: 'Poziom 2', d: 'Wszystko + DODATKOWA OSOBA gratis.'},
+                     {n: '20+', c: 'primary', l: 'Poziom 3', d: 'Wszystko + DWIE OSOBY gratis.'}
                    ].map((m, i) => (
                      <div key={m.l} className="flex-1 flex flex-row md:flex-col items-center md:text-center group relative">
                         {i < 2 && <div className="absolute left-5 top-10 bottom-0 w-0.5 bg-slate-100 md:hidden"></div>}
